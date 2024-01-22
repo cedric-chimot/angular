@@ -14,4 +14,6 @@ export class UserComponent {
   prenom: string = 'Cedric';
   job: string = '';
 
+  imageUrl: string = '../../assets/2019-03-27.jpg';
+
 }
