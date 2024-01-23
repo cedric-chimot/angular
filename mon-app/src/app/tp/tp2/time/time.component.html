@@ -1,0 +1,8 @@
+<div>
+    @for (timeZone of timeZones; track timeZones) {
+        <p>
+            <app-time-child [time]="setTime(timeZone)"></app-time-child>
+            <span>{{ timeZone.split('/')[1] }}</span>
+        </p>
+    }
+</div>

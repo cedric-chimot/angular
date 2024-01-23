@@ -6,15 +6,19 @@ import { AlertButtonComponent } from "./components/alert-button/alert-button.com
 import { ListeComponent } from './components/liste/liste.component';
 import { MagieComponent } from "./components/magie/magie.component";
 import { ListeFiltreComponent } from "./components/liste-filtre/liste-filtre.component";
-import { CartesComponent } from './tp1/cartes/cartes.component';
-import { AffichageComponent } from './tp1/affichage/affichage.component';
+import { GenericAlertButtonComponent } from "./components/generic-alert-button/generic-alert-button.component";
+import { ButtonMenuComponent } from "./components/button-menu/button-menu.component";
+import { AffichageComponent } from "./tp/tp1/affichage/affichage.component";
+import { TimeComponent } from "./tp/tp2/time/time.component";
+import { ListeCoursesComponent } from "./components/liste-courses/liste-courses.component";
+import { ReactiveListeCoursesComponent } from "./components/reactive-liste-courses/reactive-liste-courses.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, CartesComponent, AffichageComponent, FirstComponentComponent, UserComponent, AlertButtonComponent, ListeComponent, MagieComponent, ListeFiltreComponent]
+    imports: [RouterOutlet, AffichageComponent, FirstComponentComponent, UserComponent, AlertButtonComponent, ListeComponent, MagieComponent, ListeFiltreComponent, GenericAlertButtonComponent, ButtonMenuComponent, TimeComponent, ListeCoursesComponent, ReactiveListeCoursesComponent]
 })
 export class AppComponent {
 [x: string]: any;
