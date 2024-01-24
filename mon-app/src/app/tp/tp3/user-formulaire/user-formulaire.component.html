@@ -1,0 +1,48 @@
+@for (user of users; track user) {
+    <p>Nom : {{user.nom}}</p>
+    <p>Prenom : {{user.prenom}}</p>
+    <p>Email : {{user.email}}</p>
+    <p>Entreprise : {{user.entreprise}}</p>
+    <p>Telephone : {{user.telephone}}</p>
+}
+
+<form [formGroup]="user" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Nom : </label>
+        <input type="text" formControlName="nom">
+        @if (submitted && !form['nom'].valid) {
+            <span>*Nom invalide</span>
+        }
+    </div>
+    <div>
+        <label>Prenom : </label>
+        <input type="text" formControlName="prenom">
+        @if (submitted && !form['prenom'].valid) {
+            <span>*Prenom invalide</span>
+        }
+    </div>
+    <div>
+        <label>Email : </label>
+        <input type="email" formControlName="email">
+        @if (submitted && !form['email'].valid) {
+            <span>*Email invalide</span>
+        }
+    </div>
+    <div>
+        <label>Entreprise : </label>
+        <input type="text" formControlName="entreprise">
+        @if (submitted && !form['entreprise'].valid) {
+            <span>*Entreprise invalide</span>
+        }
+    </div>
+    <div>
+        <label>Telephone : </label>
+        <input type="text" formControlName="telephone">
+        @if (submitted && !form['telephone'].valid) {
+            <span>*Telephone invalide</span>
+        }
+    </div>
+    <div>
+        <button type="submit">Ajouter</button>
+    </div>
+</form>

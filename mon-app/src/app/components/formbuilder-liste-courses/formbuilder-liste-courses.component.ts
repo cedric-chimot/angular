@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formbuilder-liste-courses',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './formbuilder-liste-courses.component.html',
   styleUrl: './formbuilder-liste-courses.component.css'
 })
@@ -32,7 +32,7 @@ export class FormbuilderListeCoursesComponent {
     if (this.article.invalid) {
       return false
     } else {
-      this.addArticle;
+      this.addArticle();
       return true;
     }
   }

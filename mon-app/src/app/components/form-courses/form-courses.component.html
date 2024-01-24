@@ -1,0 +1,21 @@
+<div>
+    <form [formGroup]="article" (ngSubmit)="onSubmit()">
+        <div>
+            <label>Désignation : </label>
+            <input type="text" formControlName="designation" />
+            @if (submitted && form['designation'].invalid) {
+                <span>*Nom invalide !</span>
+            }
+        </div>
+        <div>
+            <label>Prix : </label>
+            <input type="number" formControlName="prix" />
+            @if (submitted && form['prix'].invalid) {
+                <span>*Prix invalide !</span>
+            }
+        </div>
+        <div>
+            <button type="submit">Ajouter</button>
+        </div>
+    </form>
+</div>

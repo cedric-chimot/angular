@@ -1,1 +1,28 @@
+@for (article of articles; track article) {
+    <ul>
+        <li>
+            {{ article.designation }} : {{ article.prix }}
+        </li>
+    </ul>
+}
+<p>Total : {{ totalPrice }}</p>
 
+<form [formGroup]="article" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Désignation : </label>
+        <input type="text" formControlName="designation">
+        @if (submitted && !form['designation'].valid) {
+            <span>*Nom invalide</span>
+        }
+    </div>
+    <div>
+        <label>Prix : </label>
+        <input type="number" formControlName="prix">
+        @if (submitted && !form['designation'].valid) {
+            <span>*Prix invalide</span>
+        }
+    </div>
+    <div>
+        <button type="submit">Ajouter</button>
+    </div>
+</form>
