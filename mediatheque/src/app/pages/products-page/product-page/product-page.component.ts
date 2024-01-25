@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { ProductsPageComponent } from '../products-page.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductDetailsComponent } from "../product-details/product-details.component";
+import Film from '../../../models/film.model';
+import Album from '../../../models/album.model';
+import { AlbumService } from '../../../services/album-service.service';
+import { FilmService } from '../../../services/film-service.service';
 
 @Component({
     selector: 'app-product-page',
@@ -12,19 +16,43 @@ import { ProductDetailsComponent } from "../product-details/product-details.comp
 })
 export class ProductPageComponent {
 
-  films = new ProductsPageComponent().films;
-  albums = new ProductsPageComponent().albums;
+  product!: Film | Album;
 
-  products = this.films.concat(this.albums);
-  product!:any;
+  constructor(
+    private router: Router,
+    private route:ActivatedRoute,
+    private filmService: FilmService,
+    private albumService: AlbumService
+  ) {}
 
-  constructor(private router: Router, private route:ActivatedRoute) {}
+  private subscribeFilm(id: number):void {
+    this.filmService.getFilm(id).subscribe({
+      next: (film) => this.product = film,
+      error: (err) => console.error('Erreur au chargement',err)
+    });
+  }
+
+  private subscribeAlbum(id: number):void {
+    this.albumService.getAlbum(id).subscribe({
+      next: (album) => this.product = album,
+      error: (err) => console.error('Erreur au chargement',err)
+    });
+  }
+
+  private setSubscribe(type: string | null, id: string | null): void {
+    if(type === 'films' && id) {
+      this.subscribeFilm(+id);
+    } else if (type === 'albums' && id) {
+      this.subscribeAlbum(+id);
+    } else {
+      this.router.navigate(['/not-found']);
+    }
+  }
 
   ngOnInit(): void {
+    const type = this.route.snapshot.paramMap.get('type');
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.product = this.products.find((product) => product.id == id);
-    }
+    this.setSubscribe(type, id);
   }
 
 }

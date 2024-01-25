@@ -7,27 +7,27 @@ import Album from '../models/album.model';
   providedIn: 'root'
 })
 export class AlbumService {
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {}
 
-  getFilms(): Observable<Album[]>{
+  getAlbums(): Observable<Album[]>{
     return this.httpClient.get<Album[]>(`${this.apiUrl}/albums`);
   }
 
-  getFilm(id: number): Observable<Album>{
+  getAlbum(id: number): Observable<Album>{
     return this.httpClient.get<Album>(`${this.apiUrl}/films/${id}`);
   }
 
-  createFilm(album: Album): Observable<Album>{
+  createAlbum(album: Album): Observable<Album>{
     return this.httpClient.post<Album>(`${this.apiUrl}/albums`, album);
   }
 
-  updateFilm(album: Album): Observable<Album>{
+  updateAlbum(album: Album): Observable<Album>{
     return this.httpClient.put<Album>(`${this.apiUrl}/albums/${album.id}`, album);
   }
 
-  deleteFilm(id: number): Observable<Album>{
+  deleteAlbum(id: number): Observable<Album>{
     return this.httpClient.delete<Album>(`${this.apiUrl}/albums/${id}`);
   }
 }

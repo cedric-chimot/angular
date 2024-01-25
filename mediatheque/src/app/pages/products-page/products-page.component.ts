@@ -22,7 +22,8 @@ export class ProductsPageComponent {
   constructor(private filmService: FilmService, private albumService: AlbumService) {}
 
   ngOnInit(): void {
-    this.filmService.getFilms().subscribe((films) => {this.films = films;})
+    this.filmService.getFilms().subscribe((films) => {this.films = films;});
+    this.albumService.getAlbums().subscribe((albums) => {this.albums = albums;});
   }
 
 }

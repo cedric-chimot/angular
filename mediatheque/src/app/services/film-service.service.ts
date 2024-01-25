@@ -7,7 +7,7 @@ import Film from '../models/film.model';
   providedIn: 'root'
 })
 export class FilmService {
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {}
 
