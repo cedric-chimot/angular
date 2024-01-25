@@ -3,10 +3,7 @@
         <mat-card-header>
             <div mat-card-avatar class="header-image"></div>
             <mat-card-title>
-                {{product.nom | slice:0:18}}
-                @if (product.nom.length > 18) {
-                    <span>...</span>
-                }
+                {{product.nom}}
             </mat-card-title>
             @if (product.artiste) {
                 <mat-card-subtitle class="subtitle">{{product.artiste}}</mat-card-subtitle>
@@ -17,7 +14,7 @@
         </mat-card-header>
         <hr>
         @if (!product.image) {
-            <img src="../../../assets/pic-5.png" alt="image" class="cover" mat-card-image>
+            <img src="../../../assets/2019-03-27.jpg" alt="image" class="cover" mat-card-image>
         }
         @if (product.image) {
             <img [src]="product.img" [alt]="product.nom" class="cover" mat-card-image>
@@ -28,7 +25,7 @@
           </mat-card-content>
         }
         <mat-card-actions>
-            <button mat-button [routerLink]="['/products/{{product.id}}']" routerLinkActive="router-link-active" >Details</button>
+            <button mat-button routerLink="/products" routerLinkActive="router-link-active" >Retour</button>
         </mat-card-actions>
     </mat-card>
 </div>
